@@ -1,15 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="container">
+  <Header msg="Task Tracker" />
+  
+  <AddTask/>
+  
+  <Tasks @toggle-reminder="toggleReminder" @deleteTask="deleteTask" :tasks="tasks"/>
+
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Tasks,
+    AddTask
+  }, 
+  data(){
+    return {
+      tasks:[]
+    }
+  },
+  methods:{
+    deleteTask(id){
+    if(confirm('Are you sure? ')){
+      this.tasks = this.tasks.filter((task)=>task.id!==id)
+
+    }
+
+    },
+    toggleReminder(id){
+    this.tasks = this.tasks.map((task)=>task.id===id ? {...task,reminder:!task.reminder} :task)
+    }
+
+  },
+  created(){
+    this.tasks=[
+      { id:1,
+      text:'Doctors appointment',
+      day:'March 3rd at 1:30pm',
+      reminder:true
+      },
+      {
+        id:2,
+        text:'Award ceremony ',
+        day:'2nd January at Conference Hall',
+        reminder: false
+      }
+    ]
   }
 }
 </script>
@@ -23,4 +67,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.container{
+  background-color:black;
+  margin:auto;
+  max-width:500px;
+  min-width:300px;
+  overflow:auto;
+  padding : 1rem;
+  width: 80%;
+  border: 0.5rem solid;
+  border-color: red;
+}
+
 </style>
