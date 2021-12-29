@@ -1,5 +1,5 @@
 <template>
-    <button @click="onClick()" style="{background:color">{{text}}</button>
+    <button @click="onClick()" :style="{ background : color}">{{text}}</button>
 </template>
 <script>
 export default{
@@ -10,23 +10,24 @@ export default{
             default: 'Add Task',
         },
         color:{
-            type:String,
-            
-        }
+            type:String, 
+        },
+        
+
     },
     methods:{
         onClick(){
-            alert("button clicked");
+            this.$emit('btn-clicked')
         }
     }
 }
 </script>
 <style scoped>
 button{
-    background-color: blue;
+    background: white;
     border-radius: .2rem;
-    border-color: red;
-    color:white;
+    border-color: black;
+    color:#fff;
     height:1.5rem;
 
 }

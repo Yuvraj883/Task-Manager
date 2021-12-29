@@ -1,6 +1,9 @@
 <template>
     <h1>{{msg}}</h1>
-    <Button button="Button"/>
+    <Button 
+    :text="updateButton?'Close':'Add Task'"
+    :color="updateButton?'red':'green'"
+    @btn-clicked="$emit('btn-clicked')" button="Button"/>
 
 </template>
 <script>
@@ -12,6 +15,9 @@ export default{
         msg:{
             type:String,
             default: 'Task Tracker'
+        },
+        updateButton:{
+            type:Boolean
         }
     },
     components: {
