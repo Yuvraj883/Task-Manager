@@ -39,7 +39,9 @@ export default {
       this.showAddTask = !this.showAddTask;
     },
     addTask(newTask) {
-      this.tasks = [...this.tasks, newTask];
+      //alert(newTask)
+      //console.log(newTask)
+      this.tasks = [newTask,...this.tasks];
       localStorage.setItem("Task-tracker-tasks", JSON.stringify(this.tasks));
     },
     deleteTask(id) {
@@ -54,7 +56,11 @@ export default {
       );
     },
   },
-
+computed:{
+  reversedArr() {
+      return this.items.slice().reverse()
+    }
+},
 
   mounted() {
     this.tasks = JSON.parse(localStorage.getItem("Task-tracker-tasks"))
