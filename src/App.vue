@@ -33,7 +33,10 @@ export default {
       this.showAddTask=!this.showAddTask
     },
     addTask(newTask){
+      alert("Task Added");
       this.tasks= [...this.tasks, newTask]
+      localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
+      
     },
     deleteTask(id){
     if(confirm('Are you sure? ')){
@@ -47,20 +50,11 @@ export default {
     }
 
   },
-  created(){
-    this.tasks=[
-      { id:1,
-      text:'Doctors appointment',
-      day:'March 3rd at 1:30pm',
-      reminder:true
-      },
-      {
-        id:2,
-        text:'Award ceremony ',
-        day:'2nd January at Conference Hall',
-        reminder: false
-      }
-    ]
+ 
+  mounted(){
+    alert("SAved to local storage");
+  this.task=JSON.parse(localStorage.getItem('Task-tracker-tasks')
+  )
   }
 }
 </script>
@@ -75,8 +69,8 @@ export default {
   margin-top: 60px;
 }
 .container{
-  background-color:black;
-  margin:auto;
+  background-color:white;
+  margin: 1rem auto;
   max-width:500px;
   min-width:300px;
   overflow:auto;
@@ -84,6 +78,7 @@ export default {
   width: 80%;
   border: 0.5rem solid;
   border-color: red;
+  
 }
 
 </style>
