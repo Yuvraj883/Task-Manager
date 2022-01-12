@@ -33,7 +33,12 @@ export default {
       this.showAddTask=!this.showAddTask
     },
     addTask(newTask){
+<<<<<<< HEAD
       //alert("Task Added");
+=======
+      
+      
+>>>>>>> 96536ffb59491cdc21eadc3c0297d5d9654c6648
       this.tasks= [...this.tasks, newTask]
       localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
       
@@ -41,6 +46,7 @@ export default {
     deleteTask(id){
     if(confirm('Are you sure? ')){
       this.tasks = this.tasks.filter((task)=>task.id!==id)
+       localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
 
     }
 
@@ -52,9 +58,8 @@ export default {
   },
  
   mounted(){
-    //alert("SAved to local storage");
-  this.tasks=JSON.parse(localStorage.getItem('Task-tracker-tasks')
-  )
+    
+  this.tasks= JSON.parse(localStorage.getItem('Task-tracker-tasks')) ? JSON.parse(localStorage.getItem('Task-tracker-tasks')) : [];
   }
 }
 </script>
