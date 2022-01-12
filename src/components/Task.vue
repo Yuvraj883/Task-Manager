@@ -33,6 +33,12 @@ export default{
     width: 70%;
     cursor:pointer;
 
+
+}
+.fas{
+    position :absolute;
+    right:0;
+
 }
 .reminder{
     border-left: 0.5rem solid green;
