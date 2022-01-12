@@ -33,12 +33,8 @@ export default {
       this.showAddTask=!this.showAddTask
     },
     addTask(newTask){
-<<<<<<< HEAD
-      //alert("Task Added");
-=======
       
       
->>>>>>> 96536ffb59491cdc21eadc3c0297d5d9654c6648
       this.tasks= [...this.tasks, newTask]
       localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
       
