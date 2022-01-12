@@ -33,7 +33,7 @@ export default {
       this.showAddTask=!this.showAddTask
     },
     addTask(newTask){
-      alert("Task Added");
+      //alert("Task Added");
       this.tasks= [...this.tasks, newTask]
       localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
       
@@ -52,8 +52,8 @@ export default {
   },
  
   mounted(){
-    alert("SAved to local storage");
-  this.task=JSON.parse(localStorage.getItem('Task-tracker-tasks')
+    //alert("SAved to local storage");
+  this.tasks=JSON.parse(localStorage.getItem('Task-tracker-tasks')
   )
   }
 }
@@ -69,7 +69,7 @@ export default {
   margin-top: 60px;
 }
 .container{
-  background-color:white;
+  background-color:black;
   margin: 1rem auto;
   max-width:500px;
   min-width:300px;
