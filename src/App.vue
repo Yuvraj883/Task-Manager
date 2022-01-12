@@ -33,7 +33,8 @@ export default {
       this.showAddTask=!this.showAddTask
     },
     addTask(newTask){
-      alert("Task Added");
+      
+      
       this.tasks= [...this.tasks, newTask]
       localStorage.setItem('Task-tracker-tasks',JSON.stringify(this.tasks))
       
@@ -52,9 +53,8 @@ export default {
   },
  
   mounted(){
-    alert("SAved to local storage");
-  this.task=JSON.parse(localStorage.getItem('Task-tracker-tasks')
-  )
+    
+  this.tasks= JSON.parse(localStorage.getItem('Task-tracker-tasks')) ? JSON.parse(localStorage.getItem('Task-tracker-tasks')) : [];
   }
 }
 </script>
