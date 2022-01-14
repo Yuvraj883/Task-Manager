@@ -5,68 +5,35 @@
       msg="Task Tracker"
       :updateButton="showAddTask"
     />
-    <div v-if="showAddTask">
-      <AddTask @add-task="addTask" />
-    </div>
-    <Tasks
-      @toggle-reminder="toggleReminder"
-      @deleteTask="deleteTask"
-      :tasks="tasks"
-    />
+    <router-view v-show="homePage" :showAddTask="showAddTask"></router-view>
+   
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
-import Tasks from "./components/Tasks";
-import AddTask from "./components/AddTask";
+
+import Footer from "./components/Footer"
 
 export default {
   name: "App",
   components: {
-    Header,
-    Tasks,
-    AddTask,
-  },
+    Footer,
+    Header
+    
+      },
   data() {
     return {
-      tasks: [],
       showAddTask:false,
     };
   },
-  methods: {
-    toggleAddTask() {
+ methods:{
+ toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
-    addTask(newTask) {
-      //alert(newTask)
-      //console.log(newTask)
-      this.tasks = [newTask,...this.tasks];
-      localStorage.setItem("Task-tracker-tasks", JSON.stringify(this.tasks));
-    },
-    deleteTask(id) {
-      if (confirm("Are you sure? ")) {
-        this.tasks = this.tasks.filter((task) => task.id !== id);
-        localStorage.setItem("Task-tracker-tasks", JSON.stringify(this.tasks));
-      }
-    },
-    toggleReminder(id) {
-      this.tasks = this.tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
-      );
-    },
-  },
-computed:{
-  reversedArr() {
-      return this.items.slice().reverse()
-    }
-},
+ }
 
-  mounted() {
-    this.tasks = JSON.parse(localStorage.getItem("Task-tracker-tasks"))
-      ? JSON.parse(localStorage.getItem("Task-tracker-tasks"))
-      : [];
-  },
 };
 </script>
 

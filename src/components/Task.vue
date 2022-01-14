@@ -1,7 +1,7 @@
 <template>
 <div @dblclick="$emit('toggle-Reminder', task.id)" :class="[task.reminder?'reminder':'','task']">
     <h3>{{task.text}} 
-    <i  @click="$emit('deleteTask', task.id)" class="fa fa-times"></i>
+    <i  @click="$emit('deleteTask', task.id)" class="fa fa-trash"></i>
 
     </h3>
     <p>{{task.day}}</p>
@@ -38,12 +38,12 @@ right:0;
 
 
 }
-.fas{
+/* .fas{
     position :absolute;
     right:0;
     margin-left:10rem;
 
-}
+} */
 .reminder{
     border-left: 0.5rem solid green;
 }

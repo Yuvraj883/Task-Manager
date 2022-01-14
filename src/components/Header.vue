@@ -1,6 +1,7 @@
 <template>
     <h1>{{msg}}</h1>
     <Button 
+    v-show="homePage"
     :text="updateButton?'Close':'Add Task'"
     :color="updateButton?'red':'green'"
     @btn-clicked="$emit('btn-clicked')" button="Button"/>
@@ -22,6 +23,16 @@ export default{
     },
     components: {
         Button,
+    },
+    computed:{
+     homePage(){
+            if(this.$route.path==="/"){
+            return true
+        }
+        else{
+            return false
+        }
+     }
     }
 }
 </script>
