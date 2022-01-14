@@ -1,7 +1,8 @@
 <template>
 <footer>
-   <p> Copyright &copy; 2022</p>
    <router-link v-show="homePage" to="/about">User Guide</router-link>
+   <p> Copyright &copy; 2022</p>
+
 </footer>
 </template>
 <script>
